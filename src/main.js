@@ -1,3 +1,5 @@
+import './style.css';
+
 const form = document.querySelector('#profile-form');
 const status = document.querySelector('#form-status');
 const previewStatus = document.querySelector('#preview-status'); // เพิ่มตัวเลือกกล่องสถานะใน Preview
