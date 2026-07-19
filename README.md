@@ -97,9 +97,11 @@ Console
 <img width="555" height="159" alt="console" src="https://github.com/user-attachments/assets/3d555aaa-4d39-4f66-9b8f-26dd44438877" />
 
 output บนมือถือ
+
 <img width="493" height="1003" alt="mobile" src="https://github.com/user-attachments/assets/03af463e-b1b2-429b-9c02-2d912dff1b44" />
 
 output บนแท็บเล็ต
+
 <img width="752" height="915" alt="แท็บเลต" src="https://github.com/user-attachments/assets/c675629e-c674-4946-b85d-ef7ce4fed92f" />
 
 
