@@ -83,6 +83,26 @@ git checkout -b feature/branch-name
 git push origin feature/branch-name
 ```
 
+ผลลัพธ์
+หน้า WEB
+<img width="1915" height="999" alt="image" src="https://github.com/user-attachments/assets/54a4f26b-cb8e-4c17-a071-55c26f5874ec" />
+
+เมื่อเกิดข้อผิดพลาด
+<img width="1878" height="998" alt="ff" src="https://github.com/user-attachments/assets/a1e411d1-d79e-47e8-99c4-f0ff9761fec4" />
+
+แสดงข้อมูลแบบ Real-Time
+<img width="1291" height="725" alt="ฟฟ" src="https://github.com/user-attachments/assets/d047d5be-b67d-458b-a220-08be8ff17a39" />
+
+Console
+<img width="555" height="159" alt="console" src="https://github.com/user-attachments/assets/3d555aaa-4d39-4f66-9b8f-26dd44438877" />
+
+output บนมือถือ
+<img width="493" height="1003" alt="mobile" src="https://github.com/user-attachments/assets/03af463e-b1b2-429b-9c02-2d912dff1b44" />
+
+output บนแท็บเล็ต
+<img width="752" height="915" alt="แท็บเลต" src="https://github.com/user-attachments/assets/c675629e-c674-4946-b85d-ef7ce4fed92f" />
+
+
 ---
 
 ## ปัญหาที่พบและวิธีแก้ไข
