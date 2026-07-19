@@ -6,6 +6,7 @@
 - รหัสนักศึกษา : 68543210009-5
 - ระบบปฏิบัติการที่ใช้ : Windows 11 / WSL Ubuntu 24.04 LTS
 - Repository : https://github.com/Njuntaya/engse203-lab03-68543210009-5/tree/main
+- Git Page : https://njuntaya.github.io/engse203-lab03-68543210009-5/
 
 ---
 
