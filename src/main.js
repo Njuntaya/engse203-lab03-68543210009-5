@@ -1,32 +1,32 @@
 import './style.css';
 
-const form = document.querySelector('#profile-form');
-const status = document.querySelector('#form-status');
-const previewStatus = document.querySelector('#preview-status'); // เพิ่มตัวเลือกกล่องสถานะใน Preview
+const form = document.querySelector('#request-form');
 
+// TODO 1: query preview/status/list elements
+const status = document.querySelector('#form-status');
+const previewStatus = document.querySelector('#preview-status');
 const goalCount = document.querySelector('#goal-count');
+
 const preview = {
   displayName: document.querySelector('#preview-name'),
-  learningRole: document.querySelector('#preview-role'),
-  learningGoal: document.querySelector('#preview-goal'),
+  requestType: document.querySelector('#preview-role'),
+  requestDetails: document.querySelector('#preview-goal'),
 };
 
+// TODO 2: readForm()
 function readForm() {
   return Object.fromEntries(new FormData(form).entries());
 }
 
-form.addEventListener("input", () => {
-  const data = readForm();
-  renderPreview(data);
-});
-
+// TODO 3: renderPreview(data)
 function renderPreview(data) {
   preview.displayName.textContent = data.displayName.trim() || "ยังไม่ได้ระบุชื่อ";
-  preview.learningRole.textContent = data.learningRole || "ยังไม่เลือกประเภท";
-  preview.learningGoal.textContent = data.learningGoal.trim() || "ยังไม่มีรายละเอียดคำร้อง";
-  goalCount.textContent = `${data.learningGoal.length} ตัวอักษร`;
+  preview.requestType.textContent = data.requestType || "ยังไม่เลือกประเภทคำร้อง";
+  preview.requestDetails.textContent = data.requestDetails.trim() || "ยังไม่มีรายละเอียดคำร้อง";
+  goalCount.textContent = `${data.requestDetails.length} ตัวอักษร`;
 }
 
+// TODO 4: validate(data)
 function validate(data) {
   const errors = {};
 
@@ -34,26 +34,56 @@ function validate(data) {
     errors.displayName = "กรุณากรอกชื่อผู้ยื่นคำร้องอย่างน้อย 2 ตัวอักษร";
   }
 
-  if (!data.learningRole) {
-    errors.learningRole = "กรุณาเลือกประเภทคำร้อง";
+  if (!data.requestType) {
+    errors.requestType = "กรุณาเลือกประเภทคำร้อง";
   }
 
-  if (data.learningGoal.trim().length < 10) {
-    errors.learningGoal = "กรุณากรอกรายละเอียดอย่างน้อย 10 ตัวอักษร";
+  if (data.requestDetails.trim().length < 10) {
+    errors.requestDetails = "กรุณากรอกรายละเอียดอย่างน้อย 10 ตัวอักษร";
   }
+
   return errors;
 }
 
+// TODO 5: renderErrors(errors)
 function renderErrors(errors) {
-  for (const name of ["displayName", "learningRole", "learningGoal"]) {
-    const field = form.elements[name];
-    const output = document.querySelector(`#${name}-error`);
-    const message = errors[name] ?? "";
+  const fields = ["displayName", "requestType", "requestDetails"];
 
-    output.textContent = message;
-    field.setAttribute("aria-invalid", String(Boolean(message)));
+  fields.forEach((name) => {
+    const field = form.elements[name];
+    const errorOutput = document.querySelector(`#${name}-error`);
+    const errorMessage = errors[name] ?? "";
+
+    if (errorOutput) {
+      errorOutput.textContent = errorMessage;
+    }
+
+    if (field) {
+      field.setAttribute("aria-invalid", String(Boolean(errorMessage)));
+    }
+  });
+}
+
+function renderStatus(state, message) {
+  if (status) {
+    status.dataset.state = state;
+    status.textContent = message;
+  }
+
+  if (previewStatus) {
+    previewStatus.className = `box ${state}`;
+    previewStatus.textContent = message;
   }
 }
+
+// TODO 6: input and submit listeners
+form.addEventListener("input", () => {
+  const data = readForm();
+  renderPreview(data);
+  
+  const errors = validate(data);
+  renderErrors(errors);
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -74,14 +104,6 @@ form.addEventListener("submit", (event) => {
   );
 });
 
-function renderStatus(state, message) {
-  status.dataset.state = state;
-  status.textContent = message;
-
-  if (previewStatus) {
-    previewStatus.className = `box ${state}`;
-    previewStatus.textContent = message;
-  }
-}
+console.log('LAB 3 starter ready', form);
 renderPreview(readForm());
 renderStatus("idle", "พร้อมสำหรับการกรอกข้อมูล");
